@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textual Content Creator</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to an external stylesheet -->
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <h1>Welcome to the Textual Content Creator!</h1>
+
+    <!-- Form for user input with onsubmit attribute triggering the showLoading() function -->
+    <form method="post" action="/" onsubmit="showLoading()">
+        <label for="prompt">Enter your prompt:</label>
+        <input type="text" id="prompt" name="prompt" required> <!-- Text input for user prompt -->
+        <br>
+
+        <label for="length">Desired content length:</label>
+        <input type="number" id="length" name="length" value="100" required> <!-- Number input for content length -->
+        <br>
+
+        <label for="temperature">Temperature (e.g., 0.7):</label>
+        <input type="number" id="temperature" name="temperature" step="0.1" value="0.7" required> <!-- Number input for temperature -->
+        <br>
+
+        <!-- Button for submitting the form with onclick attribute triggering the showLoading() function -->
+        <div id="generateButton">
+            <button type="submit" onclick="showLoading()">
+                Generate Content
+                <!-- Loading indicator (initially hidden) -->
+                <div class="loading" id="loading">Loading...</div>
+            </button>
+        </div>
+    </form>
+
+    {% if content %}
+        <h2>Generated Content:</h2> <!-- Heading for generated content -->
+        <!-- Paragraph for displaying the generated content -->
+        <p id="generatedContent">{{ content }}</p>
+    {% endif %}
+
+</body>
+</html>
